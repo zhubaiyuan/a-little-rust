@@ -710,30 +710,30 @@ for item in Counter {}
 ```Rust
 #[macro_export]
 macro_rules! decl_module {
-	// Entry point #1.
-	(
-		$(#[$attr:meta])*
-		pub struct $mod_type:ident<
-			$trait_instance:ident: $trait_name:ident
-			$( <I>, I: $instantiable:path $( = $module_default_instance:path )? )?
-		>
-		for enum $call_type:ident where origin: $origin_type:ty $(, $where_ty:ty: $where_bound:path )* $(,)? {
-			$( $t:tt )*
-		}
-	) => {
+    // Entry point #1.
+    (
+        $(#[$attr:meta])*
+        pub struct $mod_type:ident<
+            $trait_instance:ident: $trait_name:ident
+            $( <I>, I: $instantiable:path $( = $module_default_instance:path )? )?
+        >
+        for enum $call_type:ident where origin: $origin_type:ty $(, $where_ty:ty: $where_bound:path )* $(,)? {
+            $( $t:tt )*
+        }
+    ) => {
 ```
 * https://github.com/paritytech/substrate/blob/master/frame/support/src/debug.rs#L130
 ```Rust
 #[macro_export]
 macro_rules! runtime_print {
-	($($arg:tt)+) => {
-		{
-			use core::fmt::Write;
-			let mut w = $crate::debug::Writer::default();
-			let _ = core::write!(&mut w, $($arg)+);
-			w.print();
-		}
-	}
+    ($($arg:tt)+) => {
+        {
+            use core::fmt::Write;
+            let mut w = $crate::debug::Writer::default();
+            let _ = core::write!(&mut w, $($arg)+);
+            w.print();
+        }
+    }
 }
 ```
 
@@ -743,7 +743,7 @@ macro_rules! runtime_print {
 ```Rust
 #[proc_macro]
 pub fn impl_runtime_apis(input: TokenStream) -> TokenStream {
-	impl_runtime_apis::impl_runtime_apis_impl(input)
+    impl_runtime_apis::impl_runtime_apis_impl(input)
 }
 ```
 
